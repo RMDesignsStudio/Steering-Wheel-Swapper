@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\external\EgoEngineLibrary\EgoEngineLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- RM Designs wordmark for the HTML report header -->
+    <EmbeddedResource Include="Assets\wordmark.svg" LogicalName="wordmark.svg" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

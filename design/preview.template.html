@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swapper Branding Preview</title>
+<style>
+/* fonts are injected by make_preview.py (base64, local preview only) */
+/*FONTS*/
+:root{
+  --ink:#111111; --deep:#1C0040; --purple:#4300AD; --paper:#F2F2F2; --white:#F9F9F9;
+  --teal:#01FAC0; --magenta:#FF1FCF; --amber:#FFA000; --orange:#BE4707; --red:#ED3000; --blue:#0093FF; --green:#09CF3F;
+  --display:"Presicav","Segoe UI",sans-serif; --mono:"Roboto Mono","RobotoMono",Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#2b2b2e;color:var(--ink);font-family:var(--display);padding:28px 16px 60px}
+.page-title{max-width:1340px;margin:0 auto 18px;color:#ddd;font:600 13px/1.5 "Segoe UI",sans-serif}
+.page-title b{font-family:var(--display);letter-spacing:.12em;font-weight:800;color:#fff}
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(600px,1fr));gap:28px;max-width:1340px;margin:0 auto}
+.opt-label{color:#cfcfd4;font:600 12px/1 "Segoe UI",sans-serif;margin:0 0 8px;letter-spacing:.04em}
+
+/* ---------- the app window ---------- */
+.win{border-radius:6px;overflow:hidden;box-shadow:0 12px 40px #0009;position:relative}
+.titlebar{height:30px;display:flex;align-items:center;gap:8px;padding:0 10px;font:12px "Segoe UI",sans-serif}
+.titlebar .ico{width:16px;height:16px;border-radius:2px;background:var(--purple);display:grid;place-items:center}
+.titlebar .ico svg{width:12px}
+.titlebar .dots{margin-left:auto;letter-spacing:14px;opacity:.7}
+.band{background:var(--purple);color:var(--white);display:flex;align-items:center;justify-content:space-between;padding:16px 22px}
+.band svg{height:18px;display:block}
+.band .app{font-weight:800;letter-spacing:.16em;font-size:12.5px}
+.body{padding:18px 22px 22px;position:relative;overflow:hidden}
+.wm{position:absolute;right:-18px;bottom:-34px;font-weight:900;font-size:150px;line-height:1;letter-spacing:-.02em;opacity:.07;pointer-events:none;user-select:none}
+h1{font-weight:800;font-size:22px;letter-spacing:.1em;margin:0}
+.sub{font-family:var(--mono);font-size:12px;margin:4px 0 0}
+.rule{height:1px;background:var(--purple);margin:14px 0}
+.label{font-weight:700;font-size:10.5px;letter-spacing:.16em;margin:0 0 6px;text-transform:uppercase}
+.row{display:flex;gap:8px;margin-bottom:14px}
+.field{flex:1;height:34px;display:flex;align-items:center;padding:0 10px;font-family:var(--mono);font-size:12px;border:1px solid;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{height:34px;padding:0 14px;display:inline-flex;align-items:center;font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid;cursor:pointer;white-space:nowrap}
+.btn.primary{background:var(--purple);border-color:var(--purple);color:var(--white);padding:0 26px;font-weight:800}
+.cars{border:1px solid;padding:4px 12px;margin-bottom:14px}
+.car{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid}
+.car:last-child{border-bottom:0}
+.box{width:16px;height:16px;border:1.5px solid var(--purple);display:grid;place-items:center;flex:none}
+.box.on{background:var(--purple)}
+.box.on::after{content:"";width:8px;height:4px;border:2px solid var(--white);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.car .name{white-space:nowrap;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.car .file{font-family:var(--mono);font-size:11px;margin-left:auto;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tag{font-weight:800;font-size:9px;letter-spacing:.14em;padding:3px 7px;text-transform:uppercase;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:8px 11px;border:1px solid}
+.chip.sel{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.actions{display:flex;align-items:center;gap:14px;margin:4px 0 14px}
+.check{white-space:nowrap;display:flex;align-items:center;gap:8px;font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+.log{font-family:var(--mono);font-size:11.5px;line-height:1.6;padding:10px 12px;border:1px solid;height:150px;overflow:hidden}
+.log .ok{color:var(--teal)} .log .warn{color:var(--amber)}
+.pill{white-space:nowrap;font-weight:800;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;color:var(--ink)}
+
+/* ---------- option A: dark ---------- */
+.dark{background:var(--ink);color:var(--white)}
+.dark .titlebar{background:#0b0b0b;color:#bbb}
+.dark .sub{color:#a98bff}
+.dark .field{background:#191919;border-color:#2e2e33;color:#e8e8e8}
+.dark .btn{background:transparent;border-color:#3a3a40;color:var(--white)}
+.dark .btn.primary{background:var(--purple);border-color:var(--purple)}
+.dark .cars{border-color:#2e2e33;background:#161616}
+.dark .car{border-color:#26262b}
+.dark .chip{border-color:#3a3a40;color:#e8e8e8}
+.dark .log{background:#0c0c0c;border-color:#2e2e33;color:#c9c9cf}
+.dark .wm{color:#fff}
+.dark .label{color:#cfcfd6}
+
+/* ---------- option B: light (mod schedule look) ---------- */
+.light{background:var(--white);color:var(--ink)}
+.light .titlebar{background:#e9e9ec;color:#333}
+.light .sub{color:var(--purple)}
+.light .field{background:#fff;border-color:#d6d3df;color:#222}
+.light .btn{background:#fff;border-color:#cfcbd9;color:var(--ink)}
+.light .btn.primary,.dark .btn.primary{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.light .chip.sel,.dark .chip.sel{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.light .cars{border-color:#d6d3df;background:#fff}
+.light .car{border-color:#ebe8f1}
+.light .chip{border-color:#cfcbd9;background:#fff;color:var(--ink)}
+.light .log{background:var(--deep);border-color:var(--deep);color:#e9e2ff}
+.light .wm{color:var(--purple)}
+
+.notes{max-width:1340px;margin:22px auto 0;color:#cfcfd4;font:13px/1.6 "Segoe UI",sans-serif}
+.notes code{font-family:var(--mono);color:#fff}
+</style>
+</head>
+<body>
+<div class="page-title"><b>STEERING WHEEL SWAPPER</b> · RM Designs branding preview: two directions from your palette, same layout as the app. Pick one, or mix.</div>
+<div class="options">
+  <section>
+    <div class="opt-label">OPTION A · DARK (#111111 body, purple band)</div>
+    <div class="win dark">%%APP%%</div>
+  </section>
+  <section>
+    <div class="opt-label">OPTION B · LIGHT (your mod schedule style)</div>
+    <div class="win light">%%APP%%</div>
+  </section>
+</div>
+<div class="notes">
+  Type: <b>Presicav</b> wide caps for titles, labels and buttons; <code>roboto mono</code> lowercase for paths, notes and the log.
+  Colours: #111111 / #1C0040 / #4300AD / #F2F2F2 from your swatches; status colours from your access labels
+  (teal = verified, amber = warning, magenta/red = failed). Square corners, thin purple rules, the faded "26" watermark.
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+*.user
+dist/
+out/
+TestResults/
+tests/out/
+# commercial font files: not redistributable
+src/WheelSwap.App/Fonts/Presicav*

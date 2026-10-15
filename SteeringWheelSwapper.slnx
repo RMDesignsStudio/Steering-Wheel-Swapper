@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/external/">
+    <Project Path="external/EgoEngineLibrary/EgoEngineLibrary.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/WheelSwap.App/WheelSwap.App.csproj" />
+    <Project Path="src/WheelSwap.Cli/WheelSwap.Cli.csproj" />
+    <Project Path="src/WheelSwap.Core/WheelSwap.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/WheelSwap.Tests/WheelSwap.Tests.csproj" />
+  </Folder>
+</Solution>
